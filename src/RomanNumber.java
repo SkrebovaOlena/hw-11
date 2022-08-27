@@ -1,13 +1,15 @@
-package adapter;
-
-import proxy.ProxyService;
-
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RomanNumber implements NumberService {
+public class RomanNumber implements NumberService, ProxyService {
+
+    @Override
+    public void convertToArabicNumbers(String number) {
+        ProxyService proxyService = new ArabicNumber();
+        proxyService.convertToArabicNumbers(number);
+    }
 
     enum RomanNumeral {
         I(1), IV(4), V(5), IX(9), X(10),

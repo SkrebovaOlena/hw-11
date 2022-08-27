@@ -1,13 +1,14 @@
-package adapter;
-
 import java.util.List;
 
-public class Converter implements NumberService {
+public class Converter implements NumberService, ProxyService {
 
     private NumberService numberService;
 
     public Converter(NumberService numberService) {
         this.numberService = numberService;
+    }
+
+    public Converter() {
     }
 
     public int showArabicNumbers(String input){
@@ -31,5 +32,10 @@ public class Converter implements NumberService {
             throw new IllegalArgumentException(input + " cannot be converted to a Roman Numeral");
         }
         return result;
+    }
+
+    @Override
+    public void convertToArabicNumbers(String number) {
+
     }
 }
